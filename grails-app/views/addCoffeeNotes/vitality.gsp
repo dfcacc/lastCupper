@@ -13,6 +13,9 @@
     <script src="/assets/js/plugins/retina/retina.min.js"></script>
     <!-- Font Awesome -->
     <link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- google web fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
     <!-- Default Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,600,500,700,800,900' rel='stylesheet' type='text/css'>
@@ -62,8 +65,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a style="padding:10px 15px" href="#page-top">
-                <div class="navbar-brand " >Coffee Note Taker</div>
+            <a href="#page-top">
+                <div class="navbar-brand " style="padding:10px 15px" >
+                    <p>Coffee Notes</p>
+                </div>
                 <!--img src="/assets/img/logo.png" class="img-responsive" alt=""top left brand name-->
             </a>
         </div>
@@ -77,16 +82,7 @@
                     <a class="page-scroll" href="#about">About</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#process">Process</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#work">Work</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#pricing">Pricing</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#contact">Contact</a>
+                    <a class="page-scroll" href="#AddNote">Add Note</a>
                 </li>
             </ul>
         </div>
@@ -97,62 +93,65 @@
 <header style="background-image: url('/assets/img/coffee_bean.jpg');">
     <div class="intro-content">
         <img src="/assets/img/profile.png" class="img-responsive img-centered" alt="">
-        <div class="brand-name">coffee note taker</div>
+        <div class="brand-name">Coffee Notes</div>
         <hr class="colored">
-        <div class="brand-name-subtext">by theLastCupper</div>
+        <div class="brand-name-subtext"></div>
     </div>
     <div class="scroll-down">
-        <a class="btn page-scroll" href="#about"><i class="fa fa-angle-down fa-fw"></i></a>
+        <a class="btn page-scroll" href="#AddNote"><i class="material-icons">keyboard_arrow_down</i></a>
     </div>
 </header>
 
-<section id="contact">
+<section id="AddNote">
     <div class="container wow fadeIn">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2>Make Note</h2>
+                <h2>Add Note</h2>
                 <hr class="colored">
             </div>
         </div>
         <div class="row content-row">
             <div class="col-lg-8 col-lg-offset-2">
-                <form name="sentMessage" id="contactForm" novalidate>
+                <g:form controller="AddCoffeeNotes" name="sentMessage" action="submit" >
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>Name</label>
-                            <input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="Please specify the name.">
-                            <p class="help-block text-danger"></p>
+                            <label>Coffee Name</label>
+                            <g:textField name="coffeeName" type="text" class="form-control" placeholder="Coffee Name" id="name" required data-validation-required-message="Specify the name."></g:textField>
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label>Origin</label>
-                            <input type="email" class="form-control" placeholder="Origin" id="email" required data-validation-required-message="Please specify the Origin">
-                            <p class="help-block text-danger"></p>
+                            <g:textField name="coffeeOrigin" type="text" class="form-control" placeholder="Origin" id="email" required data-validation-required-message="Specify the origin"></g:textField>
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label>Roaster</label>
-                            <input type="tel" class="form-control" placeholder="Roaster" id="phone" required data-validation-required-message="Please specify the roaster.">
-                            <p class="help-block text-danger"></p>
+                            <g:textField name="coffeeRoaster" class="form-control" placeholder="Roaster" required data-validation-required-message="Specify the roaster."></g:textField>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Roast Date</label>
+                            <g:textField name="coffeeRoastDate" type="text" class="form-control" placeholder="Roast Date" id="roastDate" required data-validation-required-message="Specify the roast date"></g:textField>
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label>Notes</label>
-                            <textarea rows="5" class="form-control" placeholder="Notes" id="Notes" required data-validation-required-message="Please enter a note."></textarea>
-                            <p class="help-block text-danger"></p>
+                            <g:textArea name ="coffeeNotes" rows="5" class="form-control" placeholder="Notes" id="Notes"  data-validation-required-message="Add some notes"></g:textArea>
                         </div>
                     </div>
                     <br>
                     <div id="success"></div>
                     <div class="row">
                         <div class="form-group col-xs-12">
-                            <button type="submit" class="btn btn-outline-dark">Send</button>
+                            <button type="addCoffee" class="btn btn-outline-dark">Save</button>
+
                         </div>
                     </div>
-                </form>
+                </g:form>
             </div>
         </div>
     </div>

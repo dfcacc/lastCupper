@@ -3,21 +3,26 @@ package lastcupper
 class AddCoffeeNotesController {
 
     def index() {
+        def allCoffees = CoffeeNote.getAll()
+        def test = "some stuff"
         render(view: "index")
 
     }
 
     def submit() {
-        Date date = new Date()
-        def p = new CoffeeNote(name: params.inputName, origin: params.inputOrigin, roaster: params.inputRoaster, roastDate: params.inputRoastDate, notes: params.inputNotes, lastVisit: date)
+        Date today = new Date()
+        def p = new CoffeeNote(coffeeName: params.coffeeName, coffeeOrigin: params.coffeeOrigin, coffeeRoaster: params.coffeeRoaster, coffeeRoastDate: params.coffeeRoastDate, coffeeNotes: params.coffeeNotes, coffeeDateAdded: today)
         p.save()
-        render "done adding " + params.inputName
-        //render(view: 'results')
+        render "done adding " + p.coffeeName + " on " + today
     }
     def readMeow() {
-        def m = CoffeeNote.get(2)
+        def allCoffees = CoffeeNote.getAll()
+        allCoffees.each{currentRow -> render " hello " + currentRow.coffeeName}
 
-        render "Name: " + m.name
+
+
+
+
     }
     def addCoffee() {
         render(view: "addCoffee")
@@ -27,5 +32,9 @@ class AddCoffeeNotesController {
     }
     def vitality() {
         render(view: "vitality")
+
+    }
+    def submittt() {
+        render params.coffeeName
     }
 }
